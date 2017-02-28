@@ -1,3 +1,6 @@
+#Class to pull the data from the Runner and use tweepy to post to the 
+#main account
+
 import tweepy
 from keys import *
 from random import randrange
