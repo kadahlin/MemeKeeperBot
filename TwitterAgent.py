@@ -1,5 +1,9 @@
-#Class to pull the data from the Runner and use tweepy to post to the 
-#main account
+"""
+Kyle Dahlin 2017
+The Twitter Agent class is used to create a container for connecting to 
+Tweepy api and automating the calls to the main account.
+
+"""
 
 import tweepy
 from keys import *
@@ -20,6 +24,11 @@ class TwitterAgent:
 		self.api = tweepy.API(self.auth)
 
 	def post_data(self, title):
+		"""
+		Format and post the data in the title parameter in addition to 
+		the image from the default output file defined in the Image 
+		Maker class
+		"""
 		first = _get_line_from_file(FIRST_FILE)
 		second = _get_line_from_file(SECOND_FILE)
 		title = title[0].upper() + title[1:]
@@ -30,12 +39,14 @@ class TwitterAgent:
 		
 
 	def _get_line_from_file(self, filename):
+		"""Get a random line from one of the phrases file."""
 		with open(filename) as f:
 			phrases = f.readlines()
 			selection = phrases[randrange(len(phrases))]
 			return selection.strip()
 
 if __name__ == '__main__':
+	"""Test for creating and formatting the status update"""
 	t = TwitterAgent()
 	title  = "test-meme-title"
 	title = title[0].upper() + title[1:]

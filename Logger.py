@@ -1,4 +1,10 @@
-#Kyle Dahlin 2017
+"""
+Kyle Dahlin 2017
+
+The Logger class will format logs as the bot posts and fetches data. The
+log object is initialized with a file name to post all of the logs to. In the 
+future the logger will output more detailed log messages to stdout.
+"""
 
 import time
 

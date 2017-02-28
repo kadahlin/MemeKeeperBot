@@ -1,5 +1,14 @@
-#Class to read from the RSS and feed and return a tuple containing the 
-#name of the dead meme and the image
+"""
+Kyle Dahlin 2017
+
+The FeedReader class is used to read the data from the rss feed of the 
+website. The data to post method will do two main things
+1. Return true or false is there is potential data to send to the 
+	Twitter Agent
+2. Save the title of the meme to post inside the self.title field to 
+	be referenced from the class that holds the FeedReader ( in this case
+	the Runner class)
+"""
 
 import urllib.request
 import xml.etree.ElementTree as ET
