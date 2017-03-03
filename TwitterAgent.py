@@ -29,8 +29,8 @@ class TwitterAgent:
 		the image from the default output file defined in the Image 
 		Maker class
 		"""
-		first = _get_line_from_file(FIRST_FILE)
-		second = _get_line_from_file(SECOND_FILE)
+		first = self._get_line_from_file(FIRST_FILE)
+		second = self._get_line_from_file(SECOND_FILE)
 		title = title[0].upper() + title[1:]
 		title = title.replace("-", " ")
 
