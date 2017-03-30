@@ -3,6 +3,13 @@ Kyle Dahlin 2017
 The Twitter Agent class is used to create a container for connecting to 
 Tweepy api and automating the calls to the main account.
 
+Please note that inside of the keys.py file (currently not in the repo) there will be four
+variables titled as follows:
+CONSUMER_SECRET
+CONSUMER_KEY
+ACCESS_SECRET
+ACCESS_KEY
+
 """
 
 import tweepy
@@ -18,6 +25,7 @@ class TwitterAgent:
 	"""Autoamte the postings to the twitter account"""
 
 	def __init__(self):
+		"""Create the main objects that will communicate with Twitter"""
 		self.auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 		self.auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 

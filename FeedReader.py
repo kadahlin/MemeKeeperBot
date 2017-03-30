@@ -20,11 +20,12 @@ class FeedReader:
 
 
 	def __init__(self):
+		"""This creates the self.title field that is called late when fetching data"""
 		self.title = ""
 
 
-	"""Get a list of all the posts in the RSS feed that are marked as /memes/"""
 	def _get_url_data(self):
+		"""Get a list of all the posts in the RSS feed that are marked as /memes/"""
 		connection = urllib.request.urlopen(RSS_LINK)
 		file_contents = connection.read().decode('utf-8')
 
@@ -50,31 +51,35 @@ class FeedReader:
 		return tuples
 
 
-	"""Save the image at the supplied url to the local file that will be posted"""
 	def _save_image(self, url):
+		"""Save the image at the supplied url to the local file that will be posted"""
 		image_file = urllib.request.urlopen(url).read()
 
 		with open(self.title + ".jpg", "wb") as f:
 			f.write(image_file)
 
 
-	"""Get a list of titles that have already been posted and saved"""
 	def _get_obit_data(self):
+		"""Get a list of titles that have already been posted and saved"""
 		file_contents = ""
 		with open("obituary.txt") as file:
 			file_contents = file.readlines()
 		return [line.strip() for line in file_contents]
 
 
-	"""Save the title to the obit file of already dead memes"""
 	def _write_to_obit(self, name):
+		"""Save the title to the obit file of already dead memes"""
 		with open("obituary.txt", "a") as f:
 			f.write(name + '\n')
 
 
-	"""Called by the runner and will return true if there is data to post and 
-	false otherwise"""
+	
 	def data_to_post(self):
+		"""
+		Called by the runner and will return true if there is data to post and 
+		false otherwise. This function is a bit wonky and I will probably 
+		change this as the program matures and becomes stable.
+		"""
 		data = self._get_url_data()
 		file_contents = self._get_obit_data()
 		print(file_contents)

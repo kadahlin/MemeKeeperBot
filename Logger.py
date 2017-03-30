@@ -11,13 +11,15 @@ import time
 class Logger:
 
 	def __init__(self, filepath):
+		"""Remember the file path"""
 		self.filepath = filepath
 
 	def log(self, message):
+		"""Write the message to the default filepath saved in the object"""
 		with open(self.filepath, "a") as f:
 			message = time.strftime("%d/%m/%Y | %H:%M -> ") + message
 			f.write(message + '\n')
 
 if __name__ == '__main__':
 	l = Logger("debug.txt")
-	l.log("first test")
+	l.log("test log entry")
